@@ -1,0 +1,167 @@
+﻿<nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+    with font-awesome or any other icon font library -->
+        
+        @*<li class="nav-item">
+            <a href="@Url.Action("Index", "Home" , new { Area = "" })" class="nav-link active"><i class="nav-icon fas fa-dashboard"></i><p>DashBoard</p></a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index", "MastersHome" , new { Area = "Masters" })" class="nav-link "><i class="nav-icon fas fa-list-alt"></i><p>Masters</p></a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index", "Home" , new { Area = "" })" class="nav-link"><i class="nav-icon fas fa-shopping-cart"></i><p>Restaurant</p></a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index", "Home" , new { Area = "" })" class="nav-link "><i class="nav-icon fas fa-cogs"></i><p>Setting</p></a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index", "Home" , new { Area = "" })" class="nav-link"><i class="nav-icon fas fa-copy"></i><p>Report</p></a>
+        </li>*@
+
+        @*<li class="nav-item menu-is-opening menu-open">
+            <a href="home/about" class="nav-link active">
+                <i class="nav-icon fas fa-chart-pie"></i>
+                <p>
+                    masters
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Home" , new { Area = "" })" class="nav-link active">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>chartjs</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/charts/flot.html" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>flot</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/charts/inline.html" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>inline</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/charts/uplot.html" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>uplot</p>
+                    </a>
+                </li>
+            </ul>
+        </li>*@
+        <li class="nav-item">
+            <a href="@Url.Action("Index", "Home" , new { Area = "" })" class="nav-link active"><i class="nav-icon fas fa-dashboard"></i><p>DashBoard</p></a>
+        </li>
+        <li class="nav-item">
+            <a href="home/about" class="nav-link">
+                <i class="nav-icon fas fa-chart-pie"></i>
+                <p>
+                    Masters
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "MastersHome" , new { Area = "Masters" })" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Restaurant Master</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Home" , new { Area = "" })" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Food Category Master</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Home" , new { Area = "" })" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Menu Master</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Home" , new { Area = "" })" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Table Master</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Home" , new { Area = "" })" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>User Type Master</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Home" , new { Area = "" })" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>User Master</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Home" , new { Area = "" })" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Rate Master</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-edit"></i>
+                <p>
+                    Restaurant
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Home" , new { Area = "" })" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Take Order</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Home" , new { Area = "" })" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Todays Close Order</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                    Reports
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Home" , new { Area = "" })" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Todays Order</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Home" , new { Area = "" })" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Attendance</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Home" , new { Area = "" })" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Category wise Menu</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+</nav>

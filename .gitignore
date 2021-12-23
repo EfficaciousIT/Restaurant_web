@@ -3,3 +3,12 @@
 ################################################################################
 
 /.vs
+/BusinessLayer/SmartRestaurant.Business/bin/Debug
+/BusinessLayer/SmartRestaurant.Business/obj
+/DataLayer/SmartRestaurant.DAL/bin/Debug
+/DataLayer/SmartRestaurant.DAL/obj
+/DataLayer/SmartRestaurant.DTO/obj
+/DataLayer/SmartRestaurant.DTO/bin/Debug
+/packages
+/PresentationLayer/SmartRestaurant.UI.WebApp/bin
+/PresentationLayer/SmartRestaurant.UI.WebApp/obj
