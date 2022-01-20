@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SmartRestaurant.UI.WebApp</RootNamespace>
     <AssemblyName>SmartRestaurant.UI.WebApp</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,16 +49,14 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -102,6 +101,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -167,14 +167,25 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Masters\Controllers\EmployeeController.cs" />
+    <Compile Include="Areas\Masters\Controllers\FoodCategoryController.cs" />
     <Compile Include="Areas\Masters\Controllers\MastersHomeController.cs" />
+    <Compile Include="Areas\Masters\Controllers\MenuController.cs" />
+    <Compile Include="Areas\Masters\Controllers\RateController.cs" />
+    <Compile Include="Areas\Masters\Controllers\RestaurantController.cs" />
+    <Compile Include="Areas\Masters\Controllers\TableController.cs" />
+    <Compile Include="Areas\Masters\Controllers\UserController.cs" />
+    <Compile Include="Areas\Masters\Controllers\UserTypeController.cs" />
     <Compile Include="Areas\Masters\MastersAreaRegistration.cs" />
+    <Compile Include="Areas\Masters\ReportsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\CultureHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -238,6 +249,7 @@
     <Content Include="Content\Theme\dist\img\credit\visa.png" />
     <Content Include="Content\Theme\dist\img\default-150x150.png" />
     <Content Include="Content\Theme\dist\img\icons.png" />
+    <Content Include="Content\Theme\dist\img\LoginPage.jpg" />
     <Content Include="Content\Theme\dist\img\photo1.png" />
     <Content Include="Content\Theme\dist\img\photo2.png" />
     <Content Include="Content\Theme\dist\img\photo3.jpg" />
@@ -2268,6 +2280,40 @@
     <Content Include="Areas\Masters\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Masters\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Masters\Views\MastersHome\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\Restaurant\Index_Old.cshtml" />
+    <Content Include="Areas\Masters\Views\Restaurant\Create_old.cshtml" />
+    <Content Include="Areas\Masters\Views\Restaurant\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\Restaurant\Create.cshtml" />
+    <Content Include="Areas\Masters\Views\FoodCategory\Index_old.cshtml" />
+    <Content Include="Areas\Masters\Views\FoodCategory\Create.cshtml" />
+    <Content Include="Areas\Masters\Views\FoodCategory\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\Menu\Create.cshtml" />
+    <Content Include="Areas\Masters\Views\Table\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\Table\Create.cshtml" />
+    <Content Include="Areas\Masters\Views\UserType\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\UserType\Create.cshtml" />
+    <Content Include="Areas\Masters\Views\User\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\User\Create.cshtml" />
+    <Content Include="Areas\Masters\Views\Rate\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\Rate\Create.cshtml" />
+    <Content Include="Areas\Masters\Views\Restaurant\Edit.cshtml" />
+    <Content Include="Areas\Masters\Views\Restaurant\Delete.cshtml" />
+    <Content Include="Areas\Masters\Views\FoodCategory\Edit.cshtml" />
+    <Content Include="Areas\Masters\Views\FoodCategory\Delete.cshtml" />
+    <Content Include="Areas\Masters\Views\Table\Edit.cshtml" />
+    <Content Include="Areas\Masters\Views\Table\Delete.cshtml" />
+    <Content Include="Areas\Masters\Views\Menu\Edit.cshtml" />
+    <Content Include="Areas\Masters\Views\Menu\Delete.cshtml" />
+    <Content Include="Areas\Masters\Views\UserType\Edit.cshtml" />
+    <Content Include="Areas\Masters\Views\UserType\Delete.cshtml" />
+    <Content Include="Areas\Masters\Views\User\Edit.cshtml" />
+    <Content Include="Areas\Masters\Views\User\Delete.cshtml" />
+    <Content Include="Areas\Masters\Views\Employee\Index.cshtml" />
+    <Content Include="Areas\Masters\Views\Employee\Create.cshtml" />
+    <Content Include="Areas\Masters\Views\Employee\Edit.cshtml" />
+    <Content Include="Areas\Masters\Views\Employee\Delete.cshtml" />
+    <Content Include="Areas\Masters\Views\Reports\TodaysOrderReport.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2281,7 +2327,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -2318,10 +2366,13 @@
     <Content Include="Views\Shared\_Aside.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_TopRight.cshtml" />
+    <Content Include="Views\Account\Login - Copy.cshtml" />
+    <Content Include="Views\Account\Register - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Masters\Models\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -2335,6 +2386,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\BusinessLayer\SmartRestaurant.Business\SmartRestaurant.Business.csproj">
+      <Project>{661809cd-7c0a-4982-b055-2489adf231cf}</Project>
+      <Name>SmartRestaurant.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\BusinessLayer\SmartRestaurant.Model\SmartRestaurant.Model.csproj">
+      <Project>{d97005d7-b9d7-4573-bb5d-3554e6c962a1}</Project>
+      <Name>SmartRestaurant.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

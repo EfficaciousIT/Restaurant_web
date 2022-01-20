@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace SmartRestaurant.UI.WebApp.Areas.Masters
+namespace SmartRestaurant.UI.WebApp
 {
     public class MastersAreaRegistration : AreaRegistration 
     {

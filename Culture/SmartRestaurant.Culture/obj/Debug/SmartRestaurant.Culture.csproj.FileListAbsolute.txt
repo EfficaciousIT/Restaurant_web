@@ -1,0 +1,11 @@
+E:\Shrinivas\Source\Efficacious\E-Restaurant\Culture\SmartRestaurant.Culture\bin\Debug\SmartRestaurant.Culture.dll
+E:\Shrinivas\Source\Efficacious\E-Restaurant\Culture\SmartRestaurant.Culture\bin\Debug\SmartRestaurant.Culture.pdb
+E:\Shrinivas\Source\Efficacious\E-Restaurant\Culture\SmartRestaurant.Culture\bin\Debug\mr\SmartRestaurant.Culture.resources.dll
+E:\Shrinivas\Source\Efficacious\E-Restaurant\Culture\SmartRestaurant.Culture\obj\Debug\SmartRestaurant.Culture.csprojAssemblyReference.cache
+E:\Shrinivas\Source\Efficacious\E-Restaurant\Culture\SmartRestaurant.Culture\obj\Debug\SmartRestaurant.Culture.Resource.resources
+E:\Shrinivas\Source\Efficacious\E-Restaurant\Culture\SmartRestaurant.Culture\obj\Debug\SmartRestaurant.Culture.Resource.mr.resources
+E:\Shrinivas\Source\Efficacious\E-Restaurant\Culture\SmartRestaurant.Culture\obj\Debug\SmartRestaurant.Culture.csproj.GenerateResource.cache
+E:\Shrinivas\Source\Efficacious\E-Restaurant\Culture\SmartRestaurant.Culture\obj\Debug\SmartRestaurant.Culture.csproj.CoreCompileInputs.cache
+E:\Shrinivas\Source\Efficacious\E-Restaurant\Culture\SmartRestaurant.Culture\obj\Debug\mr\SmartRestaurant.Culture.resources.dll
+E:\Shrinivas\Source\Efficacious\E-Restaurant\Culture\SmartRestaurant.Culture\obj\Debug\SmartRestaurant.Culture.dll
+E:\Shrinivas\Source\Efficacious\E-Restaurant\Culture\SmartRestaurant.Culture\obj\Debug\SmartRestaurant.Culture.pdb

@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SmartRestaurant.DTO</RootNamespace>
     <AssemblyName>SmartRestaurant.DTO</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,12 +43,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BaseDTO.cs" />
+    <Compile Include="IMstBase.cs" />
+    <Compile Include="Masters\Interface\IMstCategory.cs" />
+    <Compile Include="Masters\Interface\IMstEmployee.cs" />
+    <Compile Include="Masters\Interface\IMstMenu.cs" />
+    <Compile Include="Masters\Interface\IMstRate.cs" />
+    <Compile Include="Masters\Interface\IMstRestaurant.cs" />
+    <Compile Include="Masters\Interface\IMstTable.cs" />
+    <Compile Include="Masters\Interface\IMstUser.cs" />
+    <Compile Include="Masters\Interface\IMstUserType.cs" />
+    <Compile Include="Masters\Objects\DTOMstCategory.cs" />
+    <Compile Include="Masters\Objects\DTOMstEmployee.cs" />
+    <Compile Include="Masters\Objects\DTOMstMenu.cs" />
+    <Compile Include="Masters\Objects\DTOMstRate.cs" />
+    <Compile Include="Masters\Objects\DTOMstRestaurant.cs" />
+    <Compile Include="Masters\Objects\DTOMstTable.cs" />
+    <Compile Include="Masters\Objects\DTOMstUser.cs" />
+    <Compile Include="Masters\Objects\DTOMstUserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Masters\Interface\" />
-    <Folder Include="Masters\Objects\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

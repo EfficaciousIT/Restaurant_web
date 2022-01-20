@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SmartRestaurant.Model.UserModel>
+<p>
+    <a class="btn btn-primary btn-sm" href="@Url.Action("Create", "User" , new { Area = "Masters" })">
+        <i class="fa fa-lg fa-fw fa-plus"></i>
+        Add
+    </a>
+</p>
+<table class="table table-striped table-bordered">
+    <tr>
+        <th width="10%">
+        </th>
+        <th width="90%">
+            @Html.DisplayNameFor(model => model.User_Name)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a class="btn btn-xs btn-success" title="Edit" href="@Url.Action("Edit", "User" , new { Area = "Masters", code=item.Id })" data-ajax-update="#mainContent" data-ajax-mode="replace" data-ajax-method="GET" data-ajax="true">
+                    <i class="fa fa-fw fa-edit"></i>
+                </a>
+                <a class="btn btn-xs btn-danger" title="Delete" href="@Url.Action("Delete", "User" , new { Area = "Masters", code=item.Id})" data-ajax-update="#mainContent" data-ajax-mode="replace" data-ajax-method="GET" data-ajax="true">
+                    <i class="fa fa-fw fa-ban"></i>
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User_Name)
+            </td>
+        </tr>
+    }
+</table>
