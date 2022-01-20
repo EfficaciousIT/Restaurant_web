@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SmartRestaurant.DAL</RootNamespace>
     <AssemblyName>SmartRestaurant.DAL</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,7 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Dapper.2.0.123\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,7 +48,28 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="ConManager.cs" />
+    <Compile Include="Implementation\Masters\DALMstCategory.cs" />
+    <Compile Include="Implementation\Masters\DALMstEmployee.cs" />
+    <Compile Include="Implementation\Masters\DALMstMenu.cs" />
+    <Compile Include="Implementation\Masters\DALMstRate.cs" />
+    <Compile Include="Implementation\Masters\DALMstRestaurant.cs" />
+    <Compile Include="Implementation\Masters\DALMstTable.cs" />
+    <Compile Include="Implementation\Masters\DALMstUser.cs" />
+    <Compile Include="Implementation\Masters\DALMstUserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SmartRestaurant.DTO\SmartRestaurant.DTO.csproj">
+      <Project>{5434a8c0-801d-4ddb-9975-82213957949a}</Project>
+      <Name>SmartRestaurant.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

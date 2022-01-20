@@ -1,0 +1,10 @@
+E:\Shrinivas\Source\Efficacious\E-Restaurant\BusinessLayer\SmartRestaurant.Model\bin\Debug\SmartRestaurant.Model.dll
+E:\Shrinivas\Source\Efficacious\E-Restaurant\BusinessLayer\SmartRestaurant.Model\bin\Debug\SmartRestaurant.Model.pdb
+E:\Shrinivas\Source\Efficacious\E-Restaurant\BusinessLayer\SmartRestaurant.Model\bin\Debug\SmartRestaurant.Culture.dll
+E:\Shrinivas\Source\Efficacious\E-Restaurant\BusinessLayer\SmartRestaurant.Model\bin\Debug\SmartRestaurant.Culture.pdb
+E:\Shrinivas\Source\Efficacious\E-Restaurant\BusinessLayer\SmartRestaurant.Model\bin\Debug\mr\SmartRestaurant.Culture.resources.dll
+E:\Shrinivas\Source\Efficacious\E-Restaurant\BusinessLayer\SmartRestaurant.Model\obj\Debug\SmartRestaurant.Model.csprojAssemblyReference.cache
+E:\Shrinivas\Source\Efficacious\E-Restaurant\BusinessLayer\SmartRestaurant.Model\obj\Debug\SmartRestaurant.Model.csproj.CoreCompileInputs.cache
+E:\Shrinivas\Source\Efficacious\E-Restaurant\BusinessLayer\SmartRestaurant.Model\obj\Debug\SmartRestaurant.Model.csproj.CopyComplete
+E:\Shrinivas\Source\Efficacious\E-Restaurant\BusinessLayer\SmartRestaurant.Model\obj\Debug\SmartRestaurant.Model.dll
+E:\Shrinivas\Source\Efficacious\E-Restaurant\BusinessLayer\SmartRestaurant.Model\obj\Debug\SmartRestaurant.Model.pdb

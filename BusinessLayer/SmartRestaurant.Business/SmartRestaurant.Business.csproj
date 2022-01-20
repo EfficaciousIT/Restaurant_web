@@ -1,17 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>661809cd-7c0a-4982-b055-2489adf231cf</ProjectGuid>
+    <ProjectGuid>{661809CD-7C0A-4982-B055-2489ADF231CF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SmartRestaurant.Business</RootNamespace>
     <AssemblyName>SmartRestaurant.Business</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,24 +32,42 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BaseBusiness.cs" />
+    <Compile Include="Masters\AppUser.cs" />
+    <Compile Include="Masters\Category.cs" />
+    <Compile Include="Masters\Employee.cs" />
+    <Compile Include="Masters\Menu.cs" />
+    <Compile Include="Masters\Restaurant.cs" />
+    <Compile Include="Masters\Table.cs" />
+    <Compile Include="Masters\User.cs" />
+    <Compile Include="Masters\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\DataLayer\SmartRestaurant.DAL\SmartRestaurant.DAL.csproj">
+      <Project>{7270f26c-53c7-4673-9861-46e47c18a411}</Project>
+      <Name>SmartRestaurant.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataLayer\SmartRestaurant.DTO\SmartRestaurant.DTO.csproj">
+      <Project>{5434a8c0-801d-4ddb-9975-82213957949a}</Project>
+      <Name>SmartRestaurant.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartRestaurant.Model\SmartRestaurant.Model.csproj">
+      <Project>{d97005d7-b9d7-4573-bb5d-3554e6c962a1}</Project>
+      <Name>SmartRestaurant.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>

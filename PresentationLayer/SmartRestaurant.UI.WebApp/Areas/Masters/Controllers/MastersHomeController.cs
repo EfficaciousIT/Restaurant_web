@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SmartRestaurant.UI.WebApp.Areas.Masters.Controllers
+namespace SmartRestaurant.UI.WebApp.Controllers
 {
-    public class MastersHomeController : Controller
+    public class MastersHomeController : BaseController
     {
         // GET: Masters/MastersHome
         public ActionResult Index()

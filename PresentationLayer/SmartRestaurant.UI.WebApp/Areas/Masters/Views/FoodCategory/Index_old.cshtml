@@ -1,0 +1,29 @@
+﻿@*@model IEnumerable<SmartRestaurant.FoodCategoryModel>
+
+<a class="btn btn-primary btn-sm" href="@Url.Action("Create", "FoodCategory" , new { Area = "Masters" })">
+    <i class="fa fa-lg fa-fw fa-plus"></i>
+    Add
+</a>
+<table class="table table-striped table-bordered">
+    <tr>
+        <th width="05%"></th>
+        <th width="95%">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+    </tr>
+}
+
+</table>*@
