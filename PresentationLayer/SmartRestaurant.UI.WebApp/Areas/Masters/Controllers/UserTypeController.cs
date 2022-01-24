@@ -14,7 +14,7 @@ namespace SmartRestaurant.UI.WebApp.Controllers
         // GET: Masters/UserType
         public ActionResult Index()
         {
-            return View(UserType.GetAll(this.RestaurantId));
+            return View(UserType.GetAll(RestaurantId));
         }
 
         public ActionResult Create()
@@ -25,8 +25,12 @@ namespace SmartRestaurant.UI.WebApp.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(UserTypeModel userType)
         {
-            userType.Res_Id = this.RestaurantId;
-            int result = await UserType.Create(userType);
+            int result = 0;
+            if (ModelState.IsValid)
+            {
+                userType.Res_Id = RestaurantId;
+                result = await UserType.Create(userType);
+            }
             if (result > 0)
             {
                 return RedirectToAction("index");
@@ -41,15 +45,19 @@ namespace SmartRestaurant.UI.WebApp.Controllers
         public async Task<ActionResult> Edit(int code)
         {
             UserTypeModel UserTypeModel = new UserTypeModel();
-            UserTypeModel = await UserType.GetExistingAsync(code, this.RestaurantId);
+            UserTypeModel = await UserType.GetExistingAsync(code, RestaurantId);
             return View(UserTypeModel);
         }
 
         [HttpPost]
         public async Task<ActionResult> Edit(UserTypeModel userType)
         {
-            userType.Res_Id = this.RestaurantId;
-            int result = await UserType.Edit(userType);
+            int result = 0;
+            if (ModelState.IsValid)
+            {
+                userType.Res_Id = RestaurantId;
+                result = await UserType.Edit(userType);
+            }
             if (result > 0)
             {
                 return RedirectToAction("index");
@@ -64,15 +72,19 @@ namespace SmartRestaurant.UI.WebApp.Controllers
         public async Task<ActionResult> Delete(int code)
         {
             UserTypeModel UserTypeModel = new UserTypeModel();
-            UserTypeModel = await UserType.GetExistingAsync(code, this.RestaurantId);
+            UserTypeModel = await UserType.GetExistingAsync(code, RestaurantId);
             return View(UserTypeModel);
         }
 
         [HttpPost]
         public async Task<ActionResult> Delete(UserTypeModel userType)
         {
-            userType.Res_Id = this.RestaurantId;
-            int result = await UserType.Delete(userType);
+            int result = 0;
+            if (ModelState.IsValid)
+            {
+                userType.Res_Id = RestaurantId;
+                result = await UserType.Delete(userType);
+            }
             if (result > 0)
             {
                 return RedirectToAction("index");

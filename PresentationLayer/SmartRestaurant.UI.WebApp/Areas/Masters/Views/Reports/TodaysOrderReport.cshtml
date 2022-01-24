@@ -1,81 +1,255 @@
 ﻿@model SmartRestaurant.Model.RptOrderSearchModel
+@{
+    List<string> lstStatus = TempData["lstStatus"] as List<string>;
+}
 <p>
-    <div class="form-group">
-        @Html.LabelFor(model => model.FromDate, htmlAttributes: new { @class = "lead col-md-2" })
-        <div class="col-md-3">
-            @Html.TextBoxFor(model => model.FromDate, new { @class = "datetimepicker form-control" })
+    @using (Html.BeginForm())
+    {
+    <div class="form-group row">
+        @Html.LabelFor(model => model.FromDate, htmlAttributes: new { @class = "lead col-md-1" })
+        <div class="col-md-2">
+            @Html.TextBoxFor(model => model.FromDate, new { @class = "datetimepicker form-control col-md-8", id = "FromDate" })
             @Html.ValidationMessageFor(model => model.FromDate, "", new { @class = "text-danger" })
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.ToDate, htmlAttributes: new { @class = "lead col-md-2" })
-        <div class="col-md-3">
-            @Html.TextBoxFor(model => model.ToDate, new { @class = "datetimepicker form-control" })
+        @Html.LabelFor(model => model.ToDate, htmlAttributes: new { @class = "lead col-md-1" })
+        <div class="col-md-2">
+            @Html.TextBoxFor(model => model.ToDate, new { @class = "datetimepicker form-control col-md-8", id = "ToDate" })
             @Html.ValidationMessageFor(model => model.ToDate, "", new { @class = "text-danger" })
         </div>
+        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "lead col-md-1" })
+        <div class="col-md-2">
+            <select id="ddlStatus" class="form-control">
+                <option value="0">All</option>
+                @if (lstStatus != null)
+                {
+                    foreach (var item in lstStatus)
+                    {
+
+                        <text>
+                            <option value="@item">@item</option>
+                        </text>
+                    }
+                }
+            </select>
+        </div>
+        <div class="col-md-2">
+            <input type="submit" value="Search" class="btn btn-success fa-search" />
+        </div>
+        
     </div>
-
-
-    <a class="btn btn-primary btn-sm" href="@Url.Action("TodaysOrderSearch", "Reports" , new { Area = "Masters" })">
-        <i class="fa fa-lg fa-fw fa-search"></i>
-        Search
-    </a>
+    }
 </p>
-<table class="table table-striped table-bordered">
-    <tr>        
-        <th width="15%">
-            @Html.DisplayName("Order Id")
-        </th>
-        <th width="15%">
-            @Html.DisplayName("Table Name")
-        </th>
-        <th width="30%">
-            @Html.DisplayName("Menu Name")
-        </th>
-        <th width="10%">
-            @Html.DisplayName("Quantity")
-        </th>
-        <th width="10%">
-            @Html.DisplayName("Price")
-        </th>
-        <th width="10%">
-            @Html.DisplayName("Total")
-        </th>
-        <th width="10%">
-            @Html.DisplayName("Status")
-        </th>
-    </tr>
+<!-- /.row -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            @*<div class="card-header">
+                <h3 class="card-title">Fixed Header Table</h3>
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0" style="height: 450px;">
+                <table id="tblOrderDtl" class="table text-nowrap">
+                    <thead>
+                        <tr>
+                            <th width="05%">
+                                @Html.DisplayName("Order Id")
+                            </th>
+                            <th width="25%">
+                                @Html.DisplayName("Table Name")
+                            </th>
+                            <th width="30%">
+                                @Html.DisplayName("Menu Name")
+                            </th>
+                            <th width="10%">
+                                @Html.DisplayName("Quantity")
+                            </th>
+                            <th width="10%">
+                                @Html.DisplayName("Price")
+                            </th>
+                            <th width="10%">
+                                @Html.DisplayName("Total")
+                            </th>
+                            <th width="10%">
+                                @Html.DisplayName("Status")
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model.LstOrderDetials)
+                            {
+                                <tr>
+                                    <td width="15%">
+                                        @Html.DisplayName(item.Order_id.ToString())
+                                    </td>
+                                    <td width="15%">
+                                        @Html.DisplayName(item.Table_Name)
+                                    </td>
+                                    <td width="30%">
+                                        @Html.DisplayName(item.Menu_Name != null ? item.Menu_Name : string.Empty)
+                                    </td>
+                                    <td width="10%">
+                                        @Html.DisplayName(item.Qty.ToString())
+                                    </td>
+                                    <td width="10%">
+                                        @Html.DisplayName(item.Price.ToString())
+                                    </td>
+                                    <td width="10%">
+                                        @Html.DisplayName(item.Total.ToString())
+                                    </td>
+                                    <td width="10%">
+                                        @Html.DisplayName(item.status)
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+<!-- /.row -->
+<link href="~/Content/Theme/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" />
+<script src="~/Content/Theme/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="~/Content/Theme/plugins/jquery/jquery.min.js"></script>
 
-    @*@foreach (var item in Model)
-    {*@
-    <tr>
-        <th width="15%">
-           
-        </th>
-        <th width="15%">
-           
-        </th>
-        <th width="30%">
-           
-        </th>
-        <th width="10%">
-           
-        </th>
-        <th width="10%">
-        </th>
-        <th width="10%">
-           
-        </th>
-        <th width="10%">
-           
-        </th>
-    </tr>
-    @*}*@
-</table>
-<script>
+<script src="~/Content/Theme/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/Content/Theme/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="~/Content/Theme/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/Content/Theme/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="~/Content/Theme/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="~/Content/Theme/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="~/Content/Theme/plugins/jszip/jszip.min.js"></script>
+<script src="~/Content/Theme/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="~/Content/Theme/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="~/Content/Theme/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="~/Content/Theme/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="~/Content/Theme/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script type="text/javascript">
     $(document).ready(function () {
-        $('.datetimepicker').datetimepicker({
-            format: 'lll'
+    $("#FromDate").datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            changeYear: true,
+            numberOfMonths: 1,
+            dateFormat: 'dd/mm/yy',
+            //prevText: '<i class="fa fa-chevron-left"></i>',
+            //nextText: '<i class="fa fa-chevron-right"></i>',
+            onClose: function (selectedDate) {
+
+                $("#ToDate").datepicker("option", "minDate", selectedDate);
+            }
+
         });
+        $("#ToDate").datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            changeYear: true,
+            numberOfMonths: 1,
+            dateFormat: 'dd/mm/yy',
+            prevText: '<-',
+            nextText: '->',
+            onClose: function (selectedDate) {
+                $("#FromDate").datepicker("option", "maxDate", selectedDate);
+                cal();
+            }
+        });
+
+    function MonthDifference(d1, d2) {
+            var months;
+            months = (d2.getFullYear() - d1.getFullYear()) * 12;
+            months -= d1.getMonth();
+            months += d2.getMonth();
+            return months <= 0 ? 0 : months;
+        }
+        function cal() {
+            d1 = new Date($("#FromDate").val());
+            d2 = new Date($("#ToDate").val());
+            alert("The difference between two dates is: " + MonthDifference(d1, d2));
+        }
+
+    $("#ddlStatus").change(function(e){
+    debugger;
+    $("#tblOrderDtl >tbody >tr").remove();
+
+        $.ajax({
+            url:  '@Url.Action("OrderReportSearch", "Reports",new { Area="Masters"})',
+            type: "Post",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify({FromDate:$("#FromDate").val(),ToDate:$("#ToDate").val(),Status:$("#ddlStatus").val()}),
+            success: function (data) {
+
+                        $("#tblOrderDtl >tbody >tr").remove();
+                        $.each( data, function( i, item ) {
+                        debugger;
+                            row = "<tr>";
+                            row = row +"<td>"+ item.Order_id +"</td>";
+                            row = row +"<td>"+ item.Table_Name +"</td>";
+                            row = row +"<td>"+ item.Menu_Name +"</td>";
+                            row = row +"<td>"+ item.Qty +"</td>";
+                            row = row +"<td>"+ item.Price +"</td>";
+                            row = row +"<td>"+ item.Total +"</td>";
+                            row = row +"<td>"+ item.status +"</td>";
+                            row = row +"</tr>";
+                            $("#tblOrderDtl tbody").append(row);
+                        });
+
+                //window.location.href("MstUni/index");
+            },
+            error: function (err) {
+                $("#mainContent").html(err);
+            }
+        });
+    })
+
+    $("#btnPrint").click(function (e) {
+            //dontBlock = true;
+            $.ajax({
+                url: '@Url.Action("TodaysOrderReport", "Reports")',
+                type: "post",
+                //async: false,
+                contentType: "application/json",
+                dataType: "json",
+                //data: JSON.stringify(objForm),
+                success: function (response, status, xhr) {
+                    if (response === 0) {
+                        var urlName = 'index';
+                        $.ajax({
+                            url: urlName,
+                            type: "GET",
+                            success: function (response, status, xhr) {
+                                $("#mainContent").html(response);
+                                //window.location.href("MstUni/index");
+                            },
+                            error: function (err) {
+                                $("#mainContent").html(err);
+                            }
+                        });
+                    }
+                },
+                error: function (error) {
+                    alert("Error : " + error.toSource())
+                    $("#mainContent").html("error");
+                }
+            });
+
+        });
+
     });
 </script>

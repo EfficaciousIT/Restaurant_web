@@ -1,16 +1,17 @@
-﻿
+﻿@model SmartRestaurant.Model.DashBoardModel
 <div class="row">
     <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-info">
             <div class="inner">
                 <h3>Order</h3>
-                <p>7</p>
+                <p>@ViewBag.OrderCounter</p>
             </div>
             <div class="icon">
                 <i class="ion ion-bag"></i>
             </div>
-            <a href="#" class="small-box-footer">Take Order <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="javascript:$('#OrderModals').modal('toggle');" class="small-box-footer">View Bills<i class="fas fa-arrow-circle-right"></i></a>
+            @*<a href="#" class="small-box-footer">Take Order <i class="fas fa-arrow-circle-right"></i></a>*@
         </div>
     </div>
     <!-- ./col -->
@@ -19,75 +20,178 @@
         <div class="small-box bg-gradient-yellow">
             <div class="inner">
                 <h3 style="color:white;">Take Away</h3>
-                <p style="color:white;">23</p>
+                <p style="color:white;">@ViewBag.TakeAwayCounter</p>
             </div>
             <div class="icon">
                 <i class="ion ion-person-add"></i>
             </div>
-            <a href="#" class="small-box-footer" style="color:white;">View Order <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="javascript:$('#TakeAwayModals').modal('toggle');" class="small-box-footer">View Order<i class="fas fa-arrow-circle-right"></i></a>
+            @*<a href="#" class="small-box-footer" style="color:white;">View Order <i class="fas fa-arrow-circle-right"></i></a>*@
         </div>
     </div>
     <!-- ./col -->
-
     <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-danger">
             <div class="inner">
                 <h3>Dispatch</h3>
-                <p>97</p>
+                <p>@ViewBag.DispatchCounter</p>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="javascript:$('#DispatchModals').modal('toggle');" class="small-box-footer">View Order<i class="fas fa-arrow-circle-right"></i></a>
+            @*<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>*@
         </div>
     </div>
     <!-- ./col -->
-
     <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-success">
             <div class="inner">
                 <h3>Bill</h3>
-                <p>9</p>
+                <p>@ViewBag.BillCounter</p>
             </div>
             <div class="icon">
                 <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="#" class="small-box-footer">View Bills<i class="fas fa-arrow-circle-right"></i></a>
+            <a href="javascript:$('#myBillModals').modal('toggle');" class="small-box-footer">View Bills<i class="fas fa-arrow-circle-right"></i></a>
+            @*<a href="#" class="small-box-footer">View Bills<i class="fas fa-arrow-circle-right"></i></a>*@
         </div>
     </div>
     <!-- ./col -->
 </div>
-
-@*@{
-    ViewBag.Title = "Home Page";
-}
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<style>
+    .modal-content {
+        width:700px;
+    }
+</style>
+<!-- The Modal -->
+<!-- Modal Popup -->
+<div id="OrderModals" class="modal fade" role="dialog" >
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("_OrderDetails"); }                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
+<div id="TakeAwayModals" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("_TakeAwayDetails"); }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="DispatchModals" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("_DispatchDetails"); }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myBillModals" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderPartial("_BillDetails"); }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/Theme/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    });
+    function openOrderPopUp()
+    {
+    //
+    $("#myBillModals").modal('toggle');
+    //alert("hiii");
+    }
+</script>
+@*@{
+        ViewBag.Title = "Home Page";
+    }
+
+    <div class="jumbotron">
+        <h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>*@
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Getting started</h2>
+            <p>
+                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.
+            </p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Get more libraries</h2>
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>
+    </div>*@

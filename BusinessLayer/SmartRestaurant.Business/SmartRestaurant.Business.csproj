@@ -46,9 +46,11 @@
     <Compile Include="BaseBusiness.cs" />
     <Compile Include="Masters\AppUser.cs" />
     <Compile Include="Masters\Category.cs" />
+    <Compile Include="Masters\DashBoard.cs" />
     <Compile Include="Masters\Employee.cs" />
     <Compile Include="Masters\Menu.cs" />
     <Compile Include="Masters\Restaurant.cs" />
+    <Compile Include="Masters\RptOrder.cs" />
     <Compile Include="Masters\Table.cs" />
     <Compile Include="Masters\User.cs" />
     <Compile Include="Masters\UserType.cs" />

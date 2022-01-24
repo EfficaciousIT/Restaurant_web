@@ -14,7 +14,7 @@ namespace SmartRestaurant.UI.WebApp.Controllers
         // GET: Masters/Employee
         public ActionResult Index()
         {
-            return View(Employee.GetAll(this.RestaurantId));
+            return View(Employee.GetAll(RestaurantId));
         }
 
         public ActionResult Create()
@@ -25,8 +25,12 @@ namespace SmartRestaurant.UI.WebApp.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(EmployeeModel employee)
         {
-            employee.Res_Id = this.RestaurantId;
-            int result = await Employee.Create(employee);
+            int result = 0;
+            if (ModelState.IsValid)
+            {
+                employee.Res_Id = RestaurantId;
+                result = await Employee.Create(employee);
+            }
             if (result > 0)
             {
                 return RedirectToAction("index");
@@ -40,16 +44,22 @@ namespace SmartRestaurant.UI.WebApp.Controllers
 
         public async Task<ActionResult> Edit(int code)
         {
+            
             EmployeeModel EmployeeModel = new EmployeeModel();
-            EmployeeModel = await Employee.GetExistingAsync(code, this.RestaurantId);
+            EmployeeModel = await Employee.GetExistingAsync(code, RestaurantId);
             return View(EmployeeModel);
         }
 
         [HttpPost]
         public async Task<ActionResult> Edit(EmployeeModel employee)
         {
-            employee.Res_Id = this.RestaurantId;
-            int result = await Employee.Edit(employee);
+            int result = 0;
+            if (ModelState.IsValid)
+            {
+                employee.Res_Id = RestaurantId;
+                result = await Employee.Edit(employee);
+            }
+            
             if (result > 0)
             {
                 return RedirectToAction("index");
@@ -64,15 +74,19 @@ namespace SmartRestaurant.UI.WebApp.Controllers
         public async Task<ActionResult> Delete(int code)
         {
             EmployeeModel EmployeeModel = new EmployeeModel();
-            EmployeeModel = await Employee.GetExistingAsync(code, this.RestaurantId);
+            EmployeeModel = await Employee.GetExistingAsync(code, RestaurantId);
             return View(EmployeeModel);
         }
 
         [HttpPost]
         public async Task<ActionResult> Delete(EmployeeModel employee)
         {
-            employee.Res_Id = this.RestaurantId;
-            int result = await Employee.Delete(employee);
+            int result = 0;
+            if (ModelState.IsValid)
+            {
+                employee.Res_Id = RestaurantId;
+                result = await Employee.Delete(employee);
+            }
             if (result > 0)
             {
                 return RedirectToAction("index");

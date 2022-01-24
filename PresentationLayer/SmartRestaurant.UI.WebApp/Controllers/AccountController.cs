@@ -82,7 +82,7 @@ namespace SmartRestaurant.UI.WebApp.Controllers
                     Session["UserDtl"] = AppUser.UserDtl;
                     if (Session["UserDtl"] != null)
                     {
-                        this.RestaurantId = AppUser.UserDtl.Res_Id;
+                        RestaurantId = AppUser.UserDtl.Res_Id;
                         return RedirectToAction("Index", "Home");
                     }
                     else
