@@ -63,12 +63,12 @@
 </div>
 <style>
     .modal-content {
-        width:700px;
+        width: 700px;
     }
 </style>
 <!-- The Modal -->
 <!-- Modal Popup -->
-<div id="OrderModals" class="modal fade" role="dialog" >
+<div id="OrderModals" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -79,7 +79,7 @@
                 <h4 class="modal-title"></h4>
             </div>
             <div class="modal-body">
-                @{Html.RenderPartial("_OrderDetails"); }                
+                @{Html.RenderPartial("_OrderDetails"); }
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">
@@ -152,7 +152,27 @@
         </div>
     </div>
 </div>
-<script src="~/Content/Theme/plugins/jquery/jquery.min.js"></script>
+
+@section scripts
+{
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.4.2.min.js"></script>
+    <script src="~/signalR/hubs" type="text/javascript"></script>
+    <script>
+        $(function(){
+            var notification = $.connection.notificationHub;
+            notification.client.receiveNotification = function(data){
+            alert(data.count())
+            };
+            $.connection.start().done(function(){
+                nofitication.server.sendNotification();
+            }).fail(function(e){
+                alert(e);
+            });
+        });
+    </script>
+}
+
 <script type="text/javascript">
     $(document).ready(function () {
 

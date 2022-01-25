@@ -84,7 +84,8 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    
+                    <tbody>                        
                         @if (Model != null)
                         {
                             foreach (var item in Model.LstOrderDetials)
@@ -196,8 +197,9 @@
             success: function (data) {
 
                         $("#tblOrderDtl >tbody >tr").remove();
+                        row = "<tr>";
                         $.each( data, function( i, item ) {
-                        debugger;
+
                             row = "<tr>";
                             row = row +"<td>"+ item.Order_id +"</td>";
                             row = row +"<td>"+ item.Table_Name +"</td>";
