@@ -15,7 +15,7 @@ namespace SmartRestaurant.UI.WebApp.Controllers
         // GET: Masters/Table
         public ActionResult Index()
         {
-            return View(Table.GetAll(this.RestaurantId));
+            return View(Table.GetAll(RestaurantId));
         }
 
         public ActionResult Create()
@@ -26,8 +26,12 @@ namespace SmartRestaurant.UI.WebApp.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(TableModel table)
         {
-            table.Res_Id = this.RestaurantId;
-            int result = await Table.Create(table);
+            int result = 0;
+            if (ModelState.IsValid)
+            {
+                table.Res_Id = RestaurantId;
+                result = await Table.Create(table);
+            }
             if (result > 0)
             {
                 return RedirectToAction("index");
@@ -42,15 +46,19 @@ namespace SmartRestaurant.UI.WebApp.Controllers
         public async Task<ActionResult> Edit(int code)
         {
             TableModel TableModel = new TableModel();
-            TableModel = await Table.GetExistingAsync(code, this.RestaurantId);
+            TableModel = await Table.GetExistingAsync(code, RestaurantId);
             return View(TableModel);
         }
 
         [HttpPost]
         public async Task<ActionResult> Edit(TableModel table)
         {
-            table.Res_Id = this.RestaurantId;
-            int result = await Table.Edit(table);
+            int result = 0;
+            if (ModelState.IsValid)
+            {
+                table.Res_Id = RestaurantId;
+                result = await Table.Edit(table);
+            }
             if (result > 0)
             {
                 return RedirectToAction("index");
@@ -65,15 +73,19 @@ namespace SmartRestaurant.UI.WebApp.Controllers
         public async Task<ActionResult> Delete(int code)
         {
             TableModel TableModel = new TableModel();
-            TableModel = await Table.GetExistingAsync(code, this.RestaurantId);
+            TableModel = await Table.GetExistingAsync(code, RestaurantId);
             return View(TableModel);
         }
 
         [HttpPost]
         public async Task<ActionResult> Delete(TableModel table)
         {
-            table.Res_Id = this.RestaurantId;
-            int result = await Table.Delete(table);
+            int result = 0;
+            if (ModelState.IsValid)
+            {
+                table.Res_Id = RestaurantId;
+                result = await Table.Delete(table);
+            }
             if (result > 0)
             {
                 return RedirectToAction("index");

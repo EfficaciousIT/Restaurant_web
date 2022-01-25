@@ -50,7 +50,7 @@ namespace SmartRestaurant.DAL
                     SqlCommand cmd = new SqlCommand("Restaurant_SP", con);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@ResId", "1");
+                    cmd.Parameters.AddWithValue("@ResId", data.ResId);
                     cmd.Parameters.AddWithValue("@command", "Delete");
                     cmd.Parameters.AddWithValue("@Res_Name", data.Res_Name);
                     cmd.Parameters.AddWithValue("@Res_Area", data.Res_Area);
@@ -82,7 +82,7 @@ namespace SmartRestaurant.DAL
                     SqlCommand cmd = new SqlCommand("Restaurant_SP", con);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@ResId", "1");
+                    cmd.Parameters.AddWithValue("@ResId", data.ResId);
                     cmd.Parameters.AddWithValue("@command", "Update");
                     cmd.Parameters.AddWithValue("@Res_Name", data.Res_Name);
                     cmd.Parameters.AddWithValue("@Res_Area", data.Res_Area);

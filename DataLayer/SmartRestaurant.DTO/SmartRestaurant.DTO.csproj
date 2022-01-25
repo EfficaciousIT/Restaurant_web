@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="BaseDTO.cs" />
     <Compile Include="IMstBase.cs" />
+    <Compile Include="Masters\Interface\ICnfDashBoard.cs" />
     <Compile Include="Masters\Interface\IMstCategory.cs" />
     <Compile Include="Masters\Interface\IMstEmployee.cs" />
     <Compile Include="Masters\Interface\IMstMenu.cs" />
@@ -53,6 +54,8 @@
     <Compile Include="Masters\Interface\IMstTable.cs" />
     <Compile Include="Masters\Interface\IMstUser.cs" />
     <Compile Include="Masters\Interface\IMstUserType.cs" />
+    <Compile Include="Masters\Interface\IRptOrder.cs" />
+    <Compile Include="Masters\Objects\DTOCnfDashBoard.cs" />
     <Compile Include="Masters\Objects\DTOMstCategory.cs" />
     <Compile Include="Masters\Objects\DTOMstEmployee.cs" />
     <Compile Include="Masters\Objects\DTOMstMenu.cs" />
@@ -61,6 +64,7 @@
     <Compile Include="Masters\Objects\DTOMstTable.cs" />
     <Compile Include="Masters\Objects\DTOMstUser.cs" />
     <Compile Include="Masters\Objects\DTOMstUserType.cs" />
+    <Compile Include="Masters\Objects\DTORptOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

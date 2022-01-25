@@ -14,7 +14,7 @@ namespace SmartRestaurant.UI.WebApp.Controllers
         // GET: Masters/FoodCategory
         public ActionResult Index()
         {
-           return View(Category.GetAll(this.RestaurantId));
+           return View(Category.GetAll(RestaurantId));
         }
 
         public ActionResult Create()
@@ -25,8 +25,12 @@ namespace SmartRestaurant.UI.WebApp.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(CategoryModel category)
         {
-            category.Res_Id = this.RestaurantId;
-            int result = await Category.Create(category);
+            int result = 0;
+            if (ModelState.IsValid)
+            {
+                category.Res_Id = RestaurantId;
+                result = await Category.Create(category);
+            }
             if (result > 0)
             {
                 return RedirectToAction("index");
@@ -41,15 +45,19 @@ namespace SmartRestaurant.UI.WebApp.Controllers
         public async Task<ActionResult> Edit(int code)
         {
             CategoryModel CategoryModel = new CategoryModel();
-            CategoryModel = await Category.GetExistingAsync(code, this.RestaurantId);
+            CategoryModel = await Category.GetExistingAsync(code, RestaurantId);
             return View(CategoryModel);
         }
 
         [HttpPost]
         public async Task<ActionResult> Edit(CategoryModel category)
         {
-            category.Res_Id = this.RestaurantId;
-            int result = await Category.Edit(category);
+            int result = 0;
+            if (ModelState.IsValid)
+            {
+                category.Res_Id = RestaurantId;
+                result = await Category.Edit(category);
+            }
             if (result > 0)
             {
                 return RedirectToAction("index");
@@ -64,15 +72,19 @@ namespace SmartRestaurant.UI.WebApp.Controllers
         public async Task<ActionResult> Delete(int code)
         {
             CategoryModel CategoryModel = new CategoryModel();
-            CategoryModel = await Category.GetExistingAsync(code, this.RestaurantId);
+            CategoryModel = await Category.GetExistingAsync(code, RestaurantId);
             return View(CategoryModel);
         }
 
         [HttpPost]
         public async Task<ActionResult> Delete(CategoryModel category)
         {
-            category.Res_Id = this.RestaurantId;
-            int result = await Category.Delete(category);
+            int result = 0;
+            if (ModelState.IsValid)
+            {
+                category.Res_Id = RestaurantId;
+                result = await Category.Delete(category);
+            }
             if (result > 0)
             {
                 return RedirectToAction("index");

@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="ConManager.cs" />
+    <Compile Include="Implementation\Masters\DALCnfDashBoard.cs" />
     <Compile Include="Implementation\Masters\DALMstCategory.cs" />
     <Compile Include="Implementation\Masters\DALMstEmployee.cs" />
     <Compile Include="Implementation\Masters\DALMstMenu.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Implementation\Masters\DALMstTable.cs" />
     <Compile Include="Implementation\Masters\DALMstUser.cs" />
     <Compile Include="Implementation\Masters\DALMstUserType.cs" />
+    <Compile Include="Implementation\Masters\DALRptOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

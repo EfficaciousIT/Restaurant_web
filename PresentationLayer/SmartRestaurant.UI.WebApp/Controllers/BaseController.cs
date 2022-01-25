@@ -9,14 +9,20 @@ namespace SmartRestaurant.UI.WebApp.Controllers
 {
     public class BaseController : Controller
     {
-        public int RestaurantId { get; set; }
+        public static int RestaurantId { get; set; }
+        public static SmartRestaurant.Model.UserModel objUser { get; set; }
 
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
         {
             if (Session["UserDtl"] != null)
             {
-                var obj = Session["UserDtl"] as SmartRestaurant.Model.UserModel;
-                RestaurantId = obj.Res_Id;                
+                objUser = Session["UserDtl"] as SmartRestaurant.Model.UserModel;
+                RestaurantId = objUser.Res_Id;                
+            }
+            else
+            {
+                //return RedirectToAction("Index", "Home");
+                //return RedirectToAction("Index", "Home");
             }
             string cultureName = null;
             HttpCookie langCookie = Request.Cookies["culture"];

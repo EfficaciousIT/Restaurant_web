@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SmartRestaurant.Business;
+using SmartRestaurant.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +12,26 @@ namespace SmartRestaurant.UI.WebApp.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            DashBoardModel dashBoardModel = new DashBoardModel();
+            dashBoardModel.OrderDetail = DashBoard.GetOrderNotification(RestaurantId);
+            dashBoardModel.TakeAwayDetail = DashBoard.GetTakeAwayNotification(RestaurantId);
+            dashBoardModel.DispatchDetail = DashBoard.GetDispatchNotification(RestaurantId);
+            dashBoardModel.BillDetail = DashBoard.GetBillNotification(RestaurantId);
+            if (objUser.User_Name != null)
+            {
+                ViewBag.User = objUser.User_Name;
+                ViewBag.BillCounter = dashBoardModel.BillDetail.Count();
+                ViewBag.TakeAwayCounter = dashBoardModel.TakeAwayDetail.Count();
+                ViewBag.DispatchCounter = dashBoardModel.DispatchDetail.Count();
+                ViewBag.OrderCounter = dashBoardModel.OrderDetail.Count();
+                return View(dashBoardModel);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            
         }
 
         public ActionResult About()

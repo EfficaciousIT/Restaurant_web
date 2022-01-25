@@ -16,6 +16,10 @@ namespace SmartRestaurant.Model
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime ToDate { get; set; }
+
+        public string Status { get; set; }
+
+        public List<RptOrderModel> LstOrderDetials { get; set; }
     }
 }
 

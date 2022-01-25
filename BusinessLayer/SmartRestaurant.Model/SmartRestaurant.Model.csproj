@@ -44,10 +44,12 @@
   <ItemGroup>
     <Compile Include="BaseDTO.cs" />
     <Compile Include="Masters\CategoryModel.cs" />
+    <Compile Include="Masters\DashBoardModel.cs" />
     <Compile Include="Masters\EmployeeModel.cs" />
     <Compile Include="Masters\FoodCategoryModel.cs" />
     <Compile Include="Masters\MenuModel.cs" />
     <Compile Include="Masters\RestaurantModel.cs" />
+    <Compile Include="Masters\RptOrderModel.cs" />
     <Compile Include="Masters\RptOrderSearchModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Masters\RateModel.cs" />
