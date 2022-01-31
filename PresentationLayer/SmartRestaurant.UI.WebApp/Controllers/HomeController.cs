@@ -1,5 +1,6 @@
 ﻿using SmartRestaurant.Business;
 using SmartRestaurant.Model;
+using SmartRestaurant.UI.WebApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,5 +56,27 @@ namespace SmartRestaurant.UI.WebApp.Controllers
             //return Content("sucess");
             return RedirectToAction("Index", "Home");
         }
+        //public JsonResult GetNotification()
+        //{
+        //    NotificationRepository _messageRepository = new NotificationRepository();
+        //    DashBoardModel dashBoardModel = _messageRepository.GetAllDashBoardModel();
+        //    return Json(dashBoardModel, JsonRequestBehavior.AllowGet);
+        //    //return PartialView("_BillDetails", _messageRepository.GetAllDashBoardModel());
+        //}
+        public ActionResult GetMessages()
+        {
+            MessagesRepository _messageRepository = new MessagesRepository();
+            //DashBoardModel dashBoardModel = _messageRepository.GetAllMessages();
+            //return Json(dashBoardModel, JsonRequestBehavior.AllowGet);
+            return PartialView("_MessagesList", _messageRepository.GetAllMessages());
+        }
+
+        //public ActionResult GetBillNotificaiton()
+        //{
+        //    MessagesRepository _messageRepository = new MessagesRepository();
+        //    DashBoardModel dashBoardModel = _messageRepository.GetBillNotificaiton();
+        //    return Json(dashBoardModel, JsonRequestBehavior.AllowGet);
+        //    //return PartialView("_MessagesList", _messageRepository.GetBillNotificaiton());
+        //}
     }
 }

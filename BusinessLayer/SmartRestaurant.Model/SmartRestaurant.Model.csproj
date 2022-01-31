@@ -49,6 +49,7 @@
     <Compile Include="Masters\FoodCategoryModel.cs" />
     <Compile Include="Masters\MenuModel.cs" />
     <Compile Include="Masters\RestaurantModel.cs" />
+    <Compile Include="Masters\RptAttendenceModel.cs" />
     <Compile Include="Masters\RptOrderModel.cs" />
     <Compile Include="Masters\RptOrderSearchModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -12,42 +12,45 @@ namespace SmartRestaurant.UI.WebApp.Models
 {
     public class NotificationRepository
     {
-        readonly string _connString =
-        ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        readonly string _connString =ConfigurationManager.ConnectionStrings["MasterDBConnection"].ConnectionString;
 
-        public IEnumerable<DashBoardModel> GetAllDashBoardModel()
+        public DashBoardModel GetAllDashBoardModel()
         {
-            var DashBoardModel = new List<DashBoardModel>();
-            using (var connection = new SqlConnection(_connString))
+            DashBoardModel objreturn = new DashBoardModel();
+            List<DashBoardModel> DashBoardModel = new List<DashBoardModel>();
+            
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["MasterDBConnection"].ConnectionString))
             {
-                connection.Open();
-                using (var command = new SqlCommand(@"SELECT [MessageID], 
-                [Message], [EmptyMessage], [Date] FROM [dbo].[DashBoardModel]", connection))
+                SqlCommand cmd = new SqlCommand("Notification_SP", con);
+                cmd.Notification = null;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@command", "BillNotification");
+                cmd.Parameters.AddWithValue("@Res_id", 1);
+                SqlDependency dependency = new SqlDependency(cmd);
+                dependency.OnChange += new OnChangeEventHandler(dependency_OnChange);
+                if (con.State == ConnectionState.Closed)
                 {
-                    command.Notification = null;
-
-                    var dependency = new SqlDependency(command);
-                    dependency.OnChange += new OnChangeEventHandler(dependency_OnChange);
-
-                    if (connection.State == ConnectionState.Closed)
-                        connection.Open();
-
-                    var reader = command.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        DashBoardModel.Add(item: new DashBoardModel
-                        {
-                            Order_id = 1,
-                        //    Message = (string)reader["Message"],
-                        //    EmptyMessage = reader["EmptyMessage"] != DBNull.Value ?
-                        //(string)reader["EmptyMessage"] : "",
-                        //    MessageDate = Convert.ToDateTime(reader["Date"])
-                        });
-                    }
+                    con.Open();
                 }
+                //con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    DashBoardModel objDTOCnfDashBoard = new DashBoardModel();
+
+                    objDTOCnfDashBoard.Res_Id = Convert.ToInt32(dr["Res_Id"].ToString());
+                    objDTOCnfDashBoard.Order_id = Convert.ToInt32(dr["Order_id"].ToString());
+                    objDTOCnfDashBoard.Table_Name = dr["Table_Name"].ToString();
+                    objDTOCnfDashBoard.Total = Convert.ToDecimal(dr["Total"]);
+
+                    DashBoardModel.Add(objDTOCnfDashBoard);
+                    
+                }
+                con.Close();
             }
-            return DashBoardModel;
+            objreturn.BillDetail = DashBoardModel;
+            return objreturn;
         }
 
         private void dependency_OnChange(object sender, SqlNotificationEventArgs e)

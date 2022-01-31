@@ -12,8 +12,7 @@ namespace SmartRestaurant.UI.WebApp
 {
     public class MvcApplication : System.Web.HttpApplication
     {
-        string connString = ConfigurationManager.ConnectionStrings
-        ["MasterDBConnection"].ConnectionString;
+        string connString = ConfigurationManager.ConnectionStrings["MasterDBConnection"].ConnectionString;
 
         protected void Application_Start()
         {
