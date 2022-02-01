@@ -11,7 +11,7 @@ namespace SmartRestaurant.DAL
 {
     public class DALRptOrder : IRptOrder
     {
-        public List<DTORptOrder> GetOrderDtlByDate(DateTime FromDate, DateTime ToDate)
+        public List<DTORptOrder> GetOrderDtlByDate(string FromDate, string ToDate)
         {
             try
             {
@@ -22,8 +22,8 @@ namespace SmartRestaurant.DAL
                     SqlCommand cmd = new SqlCommand("rptOrder_SP", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@command", "ViewOrderOnDateWise");
-                    cmd.Parameters.AddWithValue("@FromDate", FromDate.ToString().Substring(0,8).ToString());
-                    cmd.Parameters.AddWithValue("@ToDate", ToDate.ToString().Substring(0, 8).ToString());
+                    cmd.Parameters.AddWithValue("@FromDate", FromDate);
+                    cmd.Parameters.AddWithValue("@ToDate", ToDate);
                     con.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
 
@@ -59,6 +59,14 @@ namespace SmartRestaurant.DAL
                         if (dr["status"].GetType() != typeof(DBNull))
                         {
                             objDTORptOrder.status = dr["status"].ToString();
+                        }
+                        if (dr["Employee_Id"].GetType() != typeof(DBNull))
+                        {
+                            objDTORptOrder.Employee_Id = Convert.ToInt32(dr["Employee_Id"].ToString());
+                        }
+                        if (dr["Employee_Name"].GetType() != typeof(DBNull))
+                        {
+                            objDTORptOrder.Employee_Name = dr["Employee_Name"].ToString();
                         }
                         //objDTORptOrder.Date = dr["Date"].ToString();
                         //objDTORptOrder.Res_Id = Convert.ToInt32(dr["Res_Id"].ToString());

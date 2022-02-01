@@ -14,5 +14,7 @@ namespace SmartRestaurant.DTO
         public string status { get; set; }
         public int Res_Id { get; set; }
         public string Date { get; set; }
+        public int Employee_Id { get; set; }
+        public string Employee_Name { get; set; }
     }
 }

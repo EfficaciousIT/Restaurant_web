@@ -5,6 +5,6 @@ namespace SmartRestaurant.DTO
 {
     public interface IRptOrder 
     {
-        List<DTORptOrder> GetOrderDtlByDate(DateTime FromDate, DateTime ToDate);
+        List<DTORptOrder> GetOrderDtlByDate(string FromDate, string ToDate);
     }
 }

@@ -15,14 +15,13 @@ namespace SmartRestaurant.Hubs
 {
     public class NotificationHub : Hub
     {
-        private static string conString =
-        ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+        private static string conString =ConfigurationManager.ConnectionStrings["MasterDBConnection"].ToString();
         public void Hello()
         {
             Clients.All.hello();
         }
 
-        [HubMethodName("notificationHub")]
+        [HubMethodName("sendMessages")]
         public static void SendMessages()
         {
             IHubContext context = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>();

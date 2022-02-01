@@ -50,6 +50,7 @@
     <Compile Include="Masters\Employee.cs" />
     <Compile Include="Masters\Menu.cs" />
     <Compile Include="Masters\Restaurant.cs" />
+    <Compile Include="Masters\RptAttendence.cs" />
     <Compile Include="Masters\RptOrder.cs" />
     <Compile Include="Masters\Table.cs" />
     <Compile Include="Masters\User.cs" />

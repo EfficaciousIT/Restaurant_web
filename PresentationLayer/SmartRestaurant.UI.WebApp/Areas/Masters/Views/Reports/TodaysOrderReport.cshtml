@@ -1,44 +1,81 @@
 ﻿@model SmartRestaurant.Model.RptOrderSearchModel
+@using SmartRestaurant.UI.WebApp.Controllers
 @{
     List<string> lstStatus = TempData["lstStatus"] as List<string>;
+    List<string> lstMenu = TempData["lstMenu"] as List<string>;
+    List<ObjSelectList> lstEmployee = TempData["lstEmployee"] as List<ObjSelectList>;
 }
 <p>
     @using (Html.BeginForm())
     {
-    <div class="form-group row">
-        @Html.LabelFor(model => model.FromDate, htmlAttributes: new { @class = "lead col-md-1" })
-        <div class="col-md-2">
-            @Html.TextBoxFor(model => model.FromDate, new { @class = "datetimepicker form-control col-md-8", id = "FromDate" })
-            @Html.ValidationMessageFor(model => model.FromDate, "", new { @class = "text-danger" })
-        </div>
-        @Html.LabelFor(model => model.ToDate, htmlAttributes: new { @class = "lead col-md-1" })
-        <div class="col-md-2">
-            @Html.TextBoxFor(model => model.ToDate, new { @class = "datetimepicker form-control col-md-8", id = "ToDate" })
-            @Html.ValidationMessageFor(model => model.ToDate, "", new { @class = "text-danger" })
-        </div>
-        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "lead col-md-1" })
-        <div class="col-md-2">
-            <select id="ddlStatus" class="form-control">
-                <option value="0">All</option>
-                @if (lstStatus != null)
-                {
-                    foreach (var item in lstStatus)
+        <div class="form-group row">
+            @Html.LabelFor(model => model.FromDate, htmlAttributes: new { @class = "lead col-md-2" })
+            <div class="col-md-2">
+                @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control col-md-8", id = "FromDate" })
+                @Html.ValidationMessageFor(model => model.FromDate, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.ToDate, htmlAttributes: new { @class = "lead col-md-1" })
+            <div class="col-md-2">
+                @Html.TextBoxFor(model => model.ToDate, new { @class = "form-control col-md-8", id = "ToDate" })
+                @Html.ValidationMessageFor(model => model.ToDate, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "lead col-md-1" })
+            <div class="col-md-2">
+                <select id="ddlStatus" class="form-control">
+                    <option value="0">All</option>
+                    @if (lstStatus != null)
                     {
+                        foreach (var item in lstStatus)
+                        {
 
-                        <text>
-                            <option value="@item">@item</option>
-                        </text>
+                            <text>
+                                <option value="@item">@item</option>
+                            </text>
+                        }
                     }
-                }
-            </select>
+                </select>
+            </div>            
+
         </div>
-        <div class="col-md-2">
-            <input type="submit" value="Search" class="btn btn-success fa-search" />
+        <div class="form-group row">
+            @Html.Label("Employee", htmlAttributes: new { @class = "lead col-md-2" })
+            <div class="col-md-2">
+                <select id="ddlEmployee" class="form-control">
+                    <option value="0">All</option>
+                    @if (lstEmployee != null)
+                    {
+                        foreach (var item in lstEmployee)
+                        {
+
+                            <text>
+                                <option value="@item.code">@item.Name</option>
+                            </text>
+                        }
+                    }
+                </select>
+            </div>
+            @Html.Label("Menu", htmlAttributes: new { @class = "lead col-md-2" })
+            <div class="col-md-2">
+                <select id="ddlMenu" class="form-control">
+                    <option value="0">All</option>
+                    @if (lstMenu != null)
+                    {
+                        foreach (var item in lstMenu)
+                        {
+
+                            <text>
+                                <option value="@item">@item</option>
+                            </text>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" value="Search" class="btn btn-success fa-search" />
+            </div>
         </div>
-        
-    </div>
-    }
-</p>
+             }
+    </p>
 <!-- /.row -->
 <div class="row">
     <div class="col-12">
@@ -183,7 +220,12 @@
             d2 = new Date($("#ToDate").val());
             alert("The difference between two dates is: " + MonthDifference(d1, d2));
         }
-
+    $("#ddlEmployee").change(function(e){
+    $("#ddlStatus").change();
+    });
+    $("#ddlMenu").change(function(e){
+    $("#ddlStatus").change();
+    });
     $("#ddlStatus").change(function(e){
     debugger;
     $("#tblOrderDtl >tbody >tr").remove();
@@ -193,7 +235,7 @@
             type: "Post",
             contentType: "application/json",
             dataType: "json",
-            data: JSON.stringify({FromDate:$("#FromDate").val(),ToDate:$("#ToDate").val(),Status:$("#ddlStatus").val()}),
+            data: JSON.stringify({FromDate:$("#FromDate").val(),ToDate:$("#ToDate").val(),Status:$("#ddlStatus").val(),EmployeeId:$("#ddlEmployee").val(),MenuName:$("#ddlMenu").val()}),
             success: function (data) {
 
                         $("#tblOrderDtl >tbody >tr").remove();

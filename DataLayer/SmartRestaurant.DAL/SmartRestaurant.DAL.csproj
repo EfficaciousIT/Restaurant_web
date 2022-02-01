@@ -57,6 +57,7 @@
     <Compile Include="Implementation\Masters\DALMstTable.cs" />
     <Compile Include="Implementation\Masters\DALMstUser.cs" />
     <Compile Include="Implementation\Masters\DALMstUserType.cs" />
+    <Compile Include="Implementation\Masters\DALRptAttendence.cs" />
     <Compile Include="Implementation\Masters\DALRptOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

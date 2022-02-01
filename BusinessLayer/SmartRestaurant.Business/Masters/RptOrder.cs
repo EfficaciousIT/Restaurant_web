@@ -13,7 +13,7 @@ namespace SmartRestaurant.Business
     {
         public static IRptOrder _dalRptOrder;
 
-        public static List<RptOrderModel> GetBillNotification(DateTime fromDate, DateTime ToDate)
+        public static List<RptOrderModel> GetBillNotification(string fromDate, string ToDate)
         {
             try
             {
@@ -42,7 +42,9 @@ namespace SmartRestaurant.Business
                            status = dtoRptOrder.status != null ? dtoRptOrder.status : string.Empty,
                            Price = dtoRptOrder.Price,
                            Date = dtoRptOrder.Date != null ? dtoRptOrder.Date:string.Empty,
-                           Total = dtoRptOrder.Total
+                           Total = dtoRptOrder.Total,
+                           Employee_Id = dtoRptOrder.Employee_Id,
+                           Employee_Name = dtoRptOrder.Employee_Name != null ? dtoRptOrder.Employee_Name : string.Empty,
 
                        };
             return list.AsEnumerable<RptOrderModel>().ToList();
