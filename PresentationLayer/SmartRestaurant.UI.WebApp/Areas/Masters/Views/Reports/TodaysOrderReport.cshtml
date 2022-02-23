@@ -34,7 +34,7 @@
                         }
                     }
                 </select>
-            </div>            
+            </div>
 
         </div>
         <div class="form-group row">
@@ -74,37 +74,37 @@
                 <input type="submit" value="Search" class="btn btn-success fa-search" />
             </div>
         </div>
-             }
-    </p>
+    }
+</p>
 <!-- /.row -->
 <div class="row">
     <div class="col-12">
         <div class="card">
             @*<div class="card-header">
-                <h3 class="card-title">Fixed Header Table</h3>
-                <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-default">
-                                <i class="fas fa-search"></i>
-                            </button>
+                    <h3 class="card-title">Fixed Header Table</h3>
+                    <div class="card-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-default">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>*@
+                </div>*@
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0" style="height: 450px;">
-                <table id="tblOrderDtl" class="table text-nowrap">
+                <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th width="05%">
+                            <th width="10%">
                                 @Html.DisplayName("Order Id")
                             </th>
                             <th width="25%">
                                 @Html.DisplayName("Table Name")
                             </th>
-                            <th width="30%">
+                            <th width="25%">
                                 @Html.DisplayName("Menu Name")
                             </th>
                             <th width="10%">
@@ -121,32 +121,32 @@
                             </th>
                         </tr>
                     </thead>
-                    
-                    <tbody>                        
+
+                    <tbody>
                         @if (Model != null)
                         {
                             foreach (var item in Model.LstOrderDetials)
                             {
                                 <tr>
-                                    <td width="15%">
+                                    <td>
                                         @Html.DisplayName(item.Order_id.ToString())
                                     </td>
-                                    <td width="15%">
+                                    <td>
                                         @Html.DisplayName(item.Table_Name)
                                     </td>
-                                    <td width="30%">
+                                    <td>
                                         @Html.DisplayName(item.Menu_Name != null ? item.Menu_Name : string.Empty)
                                     </td>
-                                    <td width="10%">
+                                    <td>
                                         @Html.DisplayName(item.Qty.ToString())
                                     </td>
-                                    <td width="10%">
+                                    <td>
                                         @Html.DisplayName(item.Price.ToString())
                                     </td>
-                                    <td width="10%">
+                                    <td>
                                         @Html.DisplayName(item.Total.ToString())
                                     </td>
-                                    <td width="10%">
+                                    <td>
                                         @Html.DisplayName(item.status)
                                     </td>
                                 </tr>
@@ -164,22 +164,13 @@
 <link href="~/Content/Theme/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" />
 <script src="~/Content/Theme/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="~/Content/Theme/plugins/jquery/jquery.min.js"></script>
-
-<script src="~/Content/Theme/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="~/Content/Theme/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="~/Content/Theme/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="~/Content/Theme/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="~/Content/Theme/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="~/Content/Theme/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="~/Content/Theme/plugins/jszip/jszip.min.js"></script>
-<script src="~/Content/Theme/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="~/Content/Theme/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="~/Content/Theme/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="~/Content/Theme/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="~/Content/Theme/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
 <script type="text/javascript">
     $(document).ready(function () {
+        debugger;
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["csv", "excel", "pdf", "print"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $("#FromDate").datepicker({
             defaultDate: "+1w",
             changeMonth: true,
@@ -228,7 +219,7 @@
     });
     $("#ddlStatus").change(function(e){
     debugger;
-    $("#tblOrderDtl >tbody >tr").remove();
+    $("#example1 >tbody >tr").remove();
 
         $.ajax({
             url:  '@Url.Action("OrderReportSearch", "Reports",new { Area="Masters"})',
@@ -238,7 +229,7 @@
             data: JSON.stringify({FromDate:$("#FromDate").val(),ToDate:$("#ToDate").val(),Status:$("#ddlStatus").val(),EmployeeId:$("#ddlEmployee").val(),MenuName:$("#ddlMenu").val()}),
             success: function (data) {
 
-                        $("#tblOrderDtl >tbody >tr").remove();
+                        $("#example1 >tbody >tr").remove();
                         row = "<tr>";
                         $.each( data, function( i, item ) {
 
@@ -251,7 +242,7 @@
                             row = row +"<td>"+ item.Total +"</td>";
                             row = row +"<td>"+ item.status +"</td>";
                             row = row +"</tr>";
-                            $("#tblOrderDtl tbody").append(row);
+                            $("#example1 tbody").append(row);
                         });
 
                 //window.location.href("MstUni/index");

@@ -17,6 +17,11 @@ namespace SmartRestaurant.UI.WebApp.Controllers
             return View();
         }
 
+        public ActionResult DataTable()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult TodaysOrderReport(RptOrderSearchModel data)
         {
