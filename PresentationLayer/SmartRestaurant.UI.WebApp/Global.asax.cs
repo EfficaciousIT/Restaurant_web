@@ -21,12 +21,14 @@ namespace SmartRestaurant.UI.WebApp
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             //Start SqlDependency with application initialization
-            SqlDependency.Start(connString);
+
+            //SqlDependency.Start(connString);
         }
         protected void Application_End()
         {
             //Stop SQL dependency
-            SqlDependency.Stop(connString);
+
+            //SqlDependency.Stop(connString);
         }
     }
 }
